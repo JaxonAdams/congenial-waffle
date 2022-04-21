@@ -24,8 +24,13 @@ readmeInfo = promptQuestions()
 # Template for README file
 readmeTemplate = f'''
 #{readmeInfo["projectTitle"]}
-##{"Table of Contents" if "description" in readmeInfo or "installation" in readmeInfo or "usage" in readmeInfo or "contributions" in readmeInfo or "tests" in readmeInfo else ""}
 
+{"##Table of Contents" if "description" in readmeInfo or "installation" in readmeInfo or "usage" in readmeInfo or "contributions" in readmeInfo or "tests" in readmeInfo else ""}
+{" - [Description](#description)" if "description" in readmeInfo else ""}
+{" - [Installation](#installation)" if "installation" in readmeInfo else ""}
+{" - [Usage](#usage)" if "usage" in readmeInfo else ""}
+{" - [Contributions](#contributions)" if "contributions" in readmeInfo else ""}
+{" - [Tests](#tests)" if "tests" in readmeInfo else ""}
 '''
 
 # If README not found in dist/ create one
@@ -33,3 +38,5 @@ readmeTemplate = f'''
 f = open("./dist/README.md", "w")
 f.write(readmeTemplate)
 f.close()
+
+print("README written. Find it in the dist/ folder.")
