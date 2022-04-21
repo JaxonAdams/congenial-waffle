@@ -21,6 +21,34 @@ def promptQuestions():
         description = input()
         projectInfo["description"] = description
 
+    # Prompt and push installation
+    installationConfirm = input("Would you like to add information on installation? y/n ").lower()
+    if installationConfirm == "y":
+        print("Please enter installation info below: ")
+        installation = input()
+        projectInfo["installation"] = installation
+    
+    # Usage
+    usageConfirm = input("Would you like to add information on usage? y/n ").lower()
+    if usageConfirm == "y":
+        print("Please enter usage info below: ")
+        usage = input()
+        projectInfo["usage"] = usage
+    
+    # Contributions
+    contributionsConfirm = input("Would you like to add information on contributions? y/n ").lower()
+    if contributionsConfirm == "y":
+        print("Please enter contribution info below: ")
+        contributions = input()
+        projectInfo["contributions"] = contributions
+    
+    # Tests
+    testsConfirm = input("Would you like to add testing information? y/n ").lower()
+    if testsConfirm == "y":
+        print("Please enter testing info below: ")
+        tests = input()
+        projectInfo["tests"] = tests
+
     # Return the data
     return projectInfo
 
@@ -42,7 +70,17 @@ readmeTemplate = f'''
 {"## Description" if "description" in readmeInfo else ""}
 {readmeInfo["description"] if "description" in readmeInfo else ""}
 
+{"## Installation" if "installation" in readmeInfo else ""}
+{readmeInfo["installation"] if "installation" in readmeInfo else ""}
 
+{"## Usage" if "usage" in readmeInfo else ""}
+{readmeInfo["usage"] if "usage" in readmeInfo else ""}
+
+{"## Contributions" if "contributions" in readmeInfo else ""}
+{readmeInfo["contributions"] if "contributions" in readmeInfo else ""}
+
+{"## Tests" if "tests" in readmeInfo else ""}
+{readmeInfo["tests"] if "tests" in readmeInfo else ""}
 
 ## Questions
 Have any questions? You can reach me through my [github account](https://github.com/{readmeInfo["userGithub"]}) or email me at [{readmeInfo["userEmail"]}](mailto:{readmeInfo["userEmail"]}).
